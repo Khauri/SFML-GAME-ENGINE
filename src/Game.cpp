@@ -20,18 +20,30 @@ void GameEngine::start()
     this->init();
     // create window
     window.create(sf::VideoMode(800, 600), this->name, sf::Style::Titlebar | sf::Style::Close);
-    // main game loop
     this->running = true;
+    // create clock
+    sf::Clock clock;
+    sf::Time timeSinceLastUpdate = sf::Time::Zero;
+    sf::Time timePerFrame = sf::seconds(1.f/60.f);
+    // main game loop
     while(window.isOpen())
     {
-        this->handleEvents();
-        this->update(0);
+        sf::Time dt = clock.restart();
+        timeSinceLastUpdate += dt;
+        while(timeSinceLastUpdate > timePerFrame)
+        {
+            timeSinceLastUpdate -= timePerFrame;
+            this->handleEvents();
+            this->update(timePerFrame.asSeconds());
+        }
+        // update game statistics (running time, framerate, etc...)
+        // this->updateStats();
         this->draw();
     }
     this->running = false;
 }
 
-void GameEngine::update(int dt)
+void GameEngine::update(float dt)
 {
     if(this->currScene)
     {

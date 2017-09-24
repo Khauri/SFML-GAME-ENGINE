@@ -18,28 +18,28 @@ void Player::init()
     character.setFillColor(this->color);
     character.setPosition(this->getPosition());
 }
-void Player::onUpdate(int dt)
+void Player::onUpdate(float dt)
 {
     if(sf::Keyboard::isKeyPressed(this->controls.up))
     {
-        this->view->move(0, -(this->charSpeed));
-        this->move(0, -(this->charSpeed));
+        this->view->move(0, -(this->charSpeed) * dt);
+        this->move(0, -(this->charSpeed) * dt);
     }
     else if(sf::Keyboard::isKeyPressed(this->controls.down))
     {
-        this->view->move(0, (this->charSpeed));
-        this->move(0, (this->charSpeed));
+        this->view->move(0, (this->charSpeed) * dt);
+        this->move(0, (this->charSpeed) * dt);
     }
 
     if(sf::Keyboard::isKeyPressed(this->controls.left))
     {
-        this->view->move(-(this->charSpeed), 0);
-        this->move(-(this->charSpeed), 0);
+        this->view->move(-(this->charSpeed) * dt, 0);
+        this->move(-(this->charSpeed) * dt, 0);
     }
     else if(sf::Keyboard::isKeyPressed(this->controls.right))
     {
-        this->view->move((this->charSpeed), 0);
-        this->move((this->charSpeed), 0);
+        this->view->move((this->charSpeed) * dt, 0);
+        this->move((this->charSpeed) * dt, 0);
     }
     character.setPosition(this->getPosition());
 }
@@ -85,11 +85,6 @@ void PlayScene::init()
     this->addChild(std::move(m));
     this->addChild(std::move(Player1));
     this->addChild(std::move(Player2));
-}
-
-void PlayScene::onDraw(sf::RenderTarget& ctx) const
-{
-    // move the views
 }
 // split screen game
 void SplitScreenGame::init()

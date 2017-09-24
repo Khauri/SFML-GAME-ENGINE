@@ -26,10 +26,10 @@ public:
     sf::Color color = sf::Color::Red;
     void setView(sf::View* v) { this->view = v; };
     void init();
-    void onUpdate(int dt);
+    void onUpdate(float dt);
     void onDraw(sf::RenderTarget& ctx) const;
 protected:
-    float charSpeed = 2.0f;
+    float charSpeed = 150.0f; // in pixels per second
     sf::View* view; // a view that follows the player
     sf::CircleShape character;
     //void onUpdate(int dt);

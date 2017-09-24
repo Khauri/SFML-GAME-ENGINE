@@ -26,7 +26,7 @@ public:
     void start();
     void stop(); // pause
     void exit(); // exit the game
-    void update(int dt);
+    void update(float dt);
     void draw();
     void changeGameScene(std::unique_ptr<GameScene> s);
     void setDebugMode(bool m){ isDebugMode = m; };
@@ -44,7 +44,7 @@ private:
     virtual void init(){}; // aka onStart
     //virtual void onStop(){};
     //virtual void onResume(){};
-    virtual void onUpdate(int dt){};
+    virtual void onUpdate(float dt){};
     virtual bool onExit(){ return true; };
     void handleEvents();
     virtual void onEvent(){};

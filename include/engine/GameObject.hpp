@@ -19,7 +19,7 @@ public:
     typedef std::unique_ptr<GameObject> GameObjectPtr;
     GameObject();
     virtual void init(){};
-    virtual void onUpdate(int dt){};
+    virtual void onUpdate(float dt){};
     virtual void onDraw(sf::RenderTarget& ctx/*, sf::RenderStates states*/) const{};
     //void addHitbox(AbstractHitbox h);
     void addChild(GameObjectPtr o);
@@ -31,7 +31,7 @@ protected:
     GameEngine* game;
     std::list<GameObjectPtr> children;
     //std::list<AbstractHitbox> hitboxes;
-    void update(int dt);
+    void update(float dt);
     void updateHitboxes(); // recalculate relative hitbox positions
     //void drawHitboxes(sf::RenderWindow* ctx);
     void setParent(GameObject* o);
