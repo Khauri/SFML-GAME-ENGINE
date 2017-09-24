@@ -4,6 +4,7 @@
 #include <memory>
 #include "engine/GameObject.hpp"
 #include "engine/Game.hpp"
+
 class WorldMap: public GameObject
 {
 public:
@@ -29,7 +30,7 @@ public:
     void onUpdate(float dt);
     void onDraw(sf::RenderTarget& ctx) const;
 protected:
-    float charSpeed = 150.0f; // in pixels per second
+    float charSpeed = 250.0f; // in pixels per second
     sf::View* view; // a view that follows the player
     sf::CircleShape character;
     //void onUpdate(int dt);

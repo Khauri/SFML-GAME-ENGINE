@@ -55,7 +55,8 @@ void PlayScene::init()
     std::cout << "Initializing Scene" << std::endl;
     // setup player 1
     Player1 = std::unique_ptr<Player>(new Player()); // tfw no make_unique in C++1 T_T
-    Player1->setPosition(400, 300);
+    Player1->setPosition(400, 400);
+    Player1->setOrigin(25, 25);
     Player1->controls.up = sf::Keyboard::W;
     Player1->controls.down = sf::Keyboard::S;
     Player1->controls.left = sf::Keyboard::A;
@@ -63,15 +64,16 @@ void PlayScene::init()
     Player1->color = sf::Color::White;
     // setup player 2 (with different controls)
     Player2 = std::unique_ptr<Player>(new Player());
-    Player2->setPosition(500, 300);
+    Player2->setPosition(700, 700);
+    Player2->setOrigin(25, 25);
     Player2->color = sf::Color::Blue;
     // setup two views
     p1View.setSize(sf::Vector2f(400, 600)); // half the window width
-    p1View.setCenter(Player1->getPosition());
+    p1View.setCenter(Player1->getPosition() + Player1->getOrigin());
     p1View.setViewport(sf::FloatRect(0, 0, 0.5f, 1)); //p1 on the left
 
     p2View.setSize(sf::Vector2f(400, 600)); // half the window width
-    p2View.setCenter(Player2->getPosition());
+    p2View.setCenter(Player2->getPosition() + Player2->getOrigin());
     p2View.setViewport(sf::FloatRect(0.5f, 0, 0.5f, 1)); // p2 on the right
     // add views to the scene
     this->addView(&p1View);
