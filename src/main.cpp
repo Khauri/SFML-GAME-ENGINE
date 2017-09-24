@@ -1,5 +1,5 @@
 #include <iostream> 
-#include "split_screen/main.hpp"
+#include "examples/split_screen.hpp"
 // world map
 void WorldMap::init()
 {

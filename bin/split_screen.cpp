@@ -1,7 +1,7 @@
 /**
 * Basic split screen game test
 */
-#include "split_screen/main.hpp"
+#include "examples/split_screen.hpp"
 
 int main(int argc, char** argv)
 {
