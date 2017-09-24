@@ -45,7 +45,6 @@ class PlayScene: public GameScene
 {
 public:
     void init();
-    void onDraw(sf::RenderTarget& ctx) const;
 protected:
     std::unique_ptr<Player> Player1;
     std::unique_ptr<Player> Player2;
